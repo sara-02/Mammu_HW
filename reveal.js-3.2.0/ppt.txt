@@ -1,0 +1,74 @@
+Vacuum Energy
+
+Vacuum energy is the odds-on-favorite to be the mysterious dark energy that accounts for a staggering 68% of the universe. In essence, it is free-flowing energy within the fabric of space-time. To best understand vacuum energy, first think of the concept of free energy, which is something we should all be familiar with. Free energy is simply energy we harness from sources like the sun with solar panels or the wind from windmills. Vacuum energy is also free energy, but it is more abundant than those other forms of free energy. Vacuum energy is essentially infinite.
+
+When we think about how the universe is constantly expanding and that the major portion of the universe is dark energy, this makes sense. As two polar-charged particles—matter and antimatter for example—are created, they inevitably collide and destroy each other in the process. The energy released from this explosion is pushing the universe outward. This energy could be vacuum energy.
+
+Another appealing element of vacuum energy is that it could explain why the universe has only started accelerating at the rate it has fairly recently on the cosmic timescale. The early universe was smaller, with less space between galaxies. Because of this, gravity played a more prominent role in holding everything together and slowing down the acceleration of the universe.
+
+The theory of vacuum energy is not without problems, however. It alone should be far too weak to account for the acceleration seen in the present-day universe. Still, it is the most complete scenario scientists have to date.
+--------------------
+Quasars
+
+Quasars are massive black holes that exist in the center of distant, and therefore ancient, galaxies. They have masses millions and sometimes billions of times greater than the sun. They are also the most luminous beacons in the sky across the entire electromagnetic spectrum. As stars and interstellar matter fall toward the quasar’s gravitationally inescapable center, the surrounding region lights up in an intense release of energy.
+
+Quasars first became mysteries to scientists in the 1960s. Radio towers were pointed to the sky, but radio waves weren't the only things that were picked up. Also detected were tiny but incredibly dense objects.
+
+Due to the diversity in the conditions of the regions close to their centers, quasars exhibit a wide range of outward appearances when viewed by astronomers from Earth. Despite the wide variety of appearances, scientists have been able to label quasars with two simple quantities: the rate at which matter is falling into the quasar, and the angle at which it is seen from Earth. At first, this mere shift in angle led astronomers to believe they were looking at three different things: quasars, blazars, and radio galaxies. We now know, however, that these are all the same object, just seen from three different perspectives.
+
+The Eddington ratio was used to explain the rate at which matter falls into this supermassive black hole. By comparing the luminosity of a quasar to its mass, we’re able to determine the rate at which material is falling into it. This ratio is also believed to play a part in the appearance of the quasars.
+---------------
+Neutrinos
+
+Neutrinos are tiny subatomic particles that carry no electrical charge and thus weakly interact with other particles. The idea of neutrinos was first proposed by Wolfgang Paul in 1930. For a long time, neutrinos were speculated to be massless (as impossible as that sounds), but scientists have been able to confirm their infinitesimal mass. Another early confusion surrounding neutrinos was that there was only believed to be one kind, but today we now classify them in three categories: electron neutrinos, muon neutrinos, and tau neutrinos.
+
+The way in which scientists got from one neutrino to three is part of the great mystery surrounding them: neutrinos seem to remember their origins. In an experiment in 1962, a neutrino was created at the same time as a muon. The neutrino was then shot through an atomic nucleus where it changed into a muon. This led scientists to conclude that the neutrino remembered how it was made. Not once during their experiment did a neutrino created with a muon change into an electron or tau particle.
+
+Because neutrinos do not carry an electrical charge and are therefore not affected by electromagnetic forces that act on charged particles, a neutrino typically passes through normal matter unimpeded. In fact, billions of neutrinos pass through the earth every second, most emanating from the sun.
+
+Neutrinos can be created in several ways—in nuclear reactions such as those that take place in the sun, during certain types of radioactive decay, in man-made nuclear reactors, or when cosmic rays hit atoms. In spite of their miniscule mass, neutrinos are so plentiful in the universe that they help to account for the mysterious 27% of the universe that is dark matter.
+-----------------------------------
+Galactic Cannibalism
+
+Galactic cannibalism is the collision of two galaxies and the subsequent absorption of parts of one into the other. The closest galaxy to us, Andromeda, is over 2.5 million light years away. But in many corners of the universe, galaxies are much more tightly packed in. All galaxies move, too. With many massive moving bodies swirling around, it’s only a matter of time before they collide and “eat” each other.
+
+When galaxies collide, their individual gravitational forces reach out and pull the other in. You can picture a massive “gravity arm” reaching out and grabbing a chunk of the other galaxy. Except this is a two-way event. However, the larger galaxy—the one with the greater gravitational pull—almost always wins the fight and causes more distortion to the smaller galaxy.
+
+Galactic cannibalism doesn’t just distort galaxies, though—it births new stars. A major component of galaxies are clouds. When galactic clouds collide, stars are born.
+
+We can look at our own solar system, the Milky Way, to get an example of this. The Milky Way is comprised of two parts: a disk and a halo. Most of the stars in the disk are relatively young and were likely formed in the Milky Way itself. The stars in the halo, on the other hand, are much older, more ancient stars. Most scientists believe that these ancient halo stars were formed in neighboring systems or galaxies but were sucked into the Milky Way due to its larger gravitational pull.
+
+Understanding galactic cannibalism helps to answer questions about our own solar system as well, particularly about whether our solar system is ordinary or unique. By understanding that, we could gain more insight into the possibility of another planet like Earth.
+----------------------------------------------
+Exoplanets
+
+An exoplanet is what we call planets that orbit a star other than the sun. The earth, for example, would be an exoplanet to aliens from another planet. Since the first exoplanets were found in the 1990s, scientists have discovered that exoplanets are actually very common. In all likelihood, just about every star in the universe has at least one planet orbiting it. The Exoplanet Orbit Database lists around 1,500 exoplanets currently proven to exist.
+
+For a solar body to classify as an exoplanet, it has to meet certain criteria. Most importantly, as you might expect, it has to be a planet. This isn’t as black and white as it sounds, however, since outside our solar system, there is no formal definition of a planet. Within our solar system, the IAU provides the most widely-accepted definition of a planet—an object that orbits the Sun in a spheroidal shape and is the dominant gravitational object in its orbit.
+
+We can look at two examples to illustrate that definition. Asteroids are not planets because, while they orbit the sun, they are sharing similar orbits with other objects that are more massive than them. Thus, they are not the dominant gravitational object. This is similar to the case of Pluto, a solar body that at one point in time was thought to be a planet but has since been declassified because it shares part of its orbit with the much larger Neptune.
+
+Identifying exoplanets is done through five primary methods: the Doppler technique, direct imaging, light curves, transit timing variations, and microlensing. One of the most common methods monitors light blockage from the stars. Telescopes in space look at thousands of stars at the same time. They’re able to track “blips” when the sun’s light is less than normal. If the blips are in repeatable patterns, it is safe to infer that the blip of less light is an orbiting planet passing between the star and the telescope.
+-----------------------------------
+
+Cosmic Microwave Background
+
+The Cosmic Microwave Background (CMB) resulted from the Big Bang. It is the thermal radiation leftovers from such an incomprehensibly massive event. In other words, it is the side effect of the universe changing from a plasma into a gas. This radiation fills the universe and can be detected everywhere we look with the right tools. Scientists liken the CMB to seeing sunlight filtering through an overcast sky.
+
+Arno Penzias and Robert Wilson discovered the CMB in 1963. While analyzing faint microwave signals from the Milky Way, they picked up noises which they originally thought were due to interference from pigeon droppings on their equipment. This noise, of course, actually turned out to be the radiation from the CMB.
+
+The reason the CMB is so important is because it proved the Big Bang theory for the creation of the universe. Up until that point, there were two competing theories: the Big Bang and the Static State theory. The latter insinuated that the universe has existed forever and has maintained the same density throughout. The Big Bang, on the other hand, not only started the universe with a singular spectacular event, but also implies that as the universe continues to expand, it also becomes less dense.
+
+No light in the universe is older than the CMB. When anyone—astronomer, physicist, or even regular Joe—looks into the sky, they are also looking into time, or the past, to be specific. It takes light a long time to travel across the vast universe—millions of years in some cases, so the stars and light we see in the night sky are objects that existed in the past. Such is the case when physicists study the CMB; they are looking into the past, to the very origins of our universe.
+----------------------
+
+Antimatter
+
+Antimatter can be seen as the opposite of everything we see in our visible world. Everything in the universe is made up of matter—from the air we breathe to the planet we walk on, the stars we see at night, even you and me. Matter in all its forms is made from a collection of particles. Every particle, however, has an antiparticle – that is, its exact opposite. Take electrons and positrons, for example—they both have the same weight and properties, but the positron has a positive electrical charge while the electron has a negative electrical charge. The positron is one of many antimatter particles.
+
+In the same way that 2 and -2 cancel each other out to equal 0 in math, when matter and antimatter collide, they destroy each other in an explosion of sorts. This makes antimatter very hard to work with, and scientists have only been to create a small amount at any given time. This, combined with the relatively small amount of antimatter that naturally exists in the universe, has made it difficult to study.
+
+Physicists are fascinated by antimatter because of its theoretical possibilities. When the two opposing particles combine and annihilate each other, their energy needs to go somewhere, which has led to ideas for bombs, rocket fuel, or even fuel for our cars.
+
+Perhaps the biggest question surrounding antimatter besides its potential uses is why we have so little of it in the universe. If antimatter and matter are essentially mirror images of each other, why did the Big Bang create so much more matter than antimatter?
+----------------------------------------------

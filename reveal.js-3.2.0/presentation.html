@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<meta name="author" content="(Prasanjit Prakash)"/>
+<link rel="stylesheet" href="https://cdn.bootcss.com/reveal.js/3.1.0/css/reveal.css"/>
+<link rel="stylesheet" href="https://cdn.bootcss.com/reveal.js/3.1.0/css/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href=""/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.bootcss.com/reveal.js/3.1.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1></h1>
+<h2>Prasanjit Prakash</h2>
+<h2><a href="mailto:jeet@deepblue">jeet@deepblue</a></h2>
+<h2></h2>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgheadline3">1. What is Functional Programming and Why should you care?</a>
+</li>
+<li><a href="#/slide-orgheadline13">2. Functional Programming in Python</a>
+</li>
+<li><a href="#/slide-orgheadline16">3. Creating Pipelines</a>
+</li>
+<li><a href="#/slide-orgheadline17">4. Acknowledgement</a></li>
+<li><a href="#/slide-orgheadline20">5. Generators</a>
+</li>
+<li><a href="#/slide-orgheadline23">6. Coroutines</a>
+</li>
+<li><a href="#/slide-orgheadline24">7. Next Steps</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-orgheadline3">
+<h2 id="orgheadline3"><span class="section-number-2">1</span> What is Functional Programming and Why should you care?</h2>
+<div class="outline-text-2" id="text-1">
+</div></section>
+<section id="slide-orgheadline1">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> What is Functional Programming:</h3>
+<ul>
+<li>Functional Programming is a declarative programming paradigm which treats computation as evaluation of mathematical functions and avoids states and mutable data.</li>
+<li>Functional Programming has roots in lambda calculus</li>
+<li>As a thumbrule functional code will have short functions that that does not change data outside and function and doesn not depend on any data outside it either i.e no side effects</li>
+
+</ul>
+</section>
+<section>
+<ul>
+<li>Functions with no side effect are called pure functions while functions with side effects are called impure functions.</li>
+<li>While it is an ideal it is not possible in practice to have only pure functions because any kind of I/O will lead to impure functions.</li>
+<li>Most functional code can be reasoned in terms of filter, map and reduce operations.</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline2">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> Why should you care:</h3>
+<ul>
+<li>Parallelization: A side effect of functional programming is that implemention of threads becomes relatively easy.</li>
+<li>Lazy Evaluation: Nothing gets pushed into memory unnecessarily. Everything happens at run time as and when data is processed</li>
+<li>Determnism: Since functional programming each function is thought of/implemented as a series of mathematical functions the output to a given input always remains the same.</li>
+
+</ul>
+</section>
+<section>
+<ul>
+<li>Modular</li>
+<li>Composable</li>
+<li>Easy to debug and test</li>
+<li>Data processing can almost always be reasoned in terms of pipelines. Pipelines are a series of transformations applied to input data in order to obtain the desired output. This model fits the functional programming paradigm like a glove.</li>
+<li>e.g ETL processes: ETL processes can always be thought of as pipelines.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline13">
+<h2 id="orgheadline13"><span class="section-number-2">2</span> Functional Programming in Python</h2>
+<div class="outline-text-2" id="text-2">
+</div></section>
+<section id="slide-orgheadline4">
+<h3 id="orgheadline4"><span class="section-number-3">2.1</span> Functional Features in Python</h3>
+<ul>
+<li>Iterators</li>
+<li>List Comprehension</li>
+<li>Generators</li>
+<li>Coroutines</li>
+<li>First class functions</li>
+<li>lambdas</li>
+<li>Higher Order functions</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline5">
+<h3 id="orgheadline5"><span class="section-number-3">2.2</span> A few drawbacks</h3>
+<ul>
+<li>Python is multi-paradigm language and while it does support functional programming it is not primarily a functional programming language e.g. Haskell.</li>
+<li>No tail call optimization</li>
+<li>Memory intensive</li>
+<li>Error Handling</li>
+<li>No pattern matching(e.g switch statement can by bypassed using the and shortcircuit hack)</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline12">
+<h3 id="orgheadline12"><span class="section-number-3">2.3</span> Examples</h3>
+<div class="outline-text-3" id="text-2-3">
+</div></section>
+<section id="slide-orgheadline6">
+<h4 id="orgheadline6"><span class="section-number-4">2.3.1</span> Iterators</h4>
+<p>
+Are objects representing data streams. iter is a built-in function that calls the <span class="underline"><span class="underline">iter</span></span> function
+defined on the object. This object returns a value when called with next and raises a StopIteration
+error when there is no next value.
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #ffcc80;">a</span> = <span style="color: #e91e63;">[</span><span style="color: #9ccc65;">1</span>, <span style="color: #9ccc65;">2</span>, <span style="color: #9ccc65;">3</span>, <span style="color: #9ccc65;">4</span>, <span style="color: #9ccc65;">5</span><span style="color: #e91e63;">]</span>
+<span style="color: #ffcc80;">iter_a</span> = <span style="color: #ff8A65;">iter</span><span style="color: #e91e63;">(</span>a<span style="color: #e91e63;">)</span>
+<span style="color: #ffcc80;">b</span> = <span style="color: #ff8A65;">next</span><span style="color: #e91e63;">(</span>iter_a<span style="color: #e91e63;">)</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline7">
+<h4 id="orgheadline7"><span class="section-number-4">2.3.2</span> List Comprehension</h4>
+<p>
+Allows you to create lists based on existing lists. Much like the map operation.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #ffcc80;">a</span> = <span style="color: #e91e63;">[</span><span style="color: #9ccc65;">1</span>, <span style="color: #9ccc65;">2</span>, <span style="color: #9ccc65;">3</span>, <span style="color: #9ccc65;">4</span>, <span style="color: #9ccc65;">5</span><span style="color: #e91e63;">]</span>
+<span style="color: #ffcc80;">b</span> = <span style="color: #e91e63;">[</span>val*val <span style="color: #fff59d;">for</span> val <span style="color: #fff59d;">in</span> a<span style="color: #e91e63;">]</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline8">
+<h4 id="orgheadline8"><span class="section-number-4">2.3.3</span> Generators</h4>
+<p>
+A function that returns arrays but instead of building the entire array in one go it yields one value
+at a time
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #ffcc80;">a</span> = <span style="color: #e91e63;">[</span><span style="color: #9ccc65;">1</span>, <span style="color: #9ccc65;">2</span>, <span style="color: #9ccc65;">3</span>, <span style="color: #9ccc65;">4</span>, <span style="color: #9ccc65;">5</span><span style="color: #e91e63;">]</span>
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">squarer</span><span style="color: #e91e63;">(</span>arr<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">for</span> v <span style="color: #fff59d;">in</span> arr:
+        <span style="color: #fff59d;">yield</span> v
+<span style="color: #ffcc80;">b</span> = <span style="color: #ff8A65;">list</span><span style="color: #e91e63;">(</span>squarer<span style="color: #2196F3;">(</span>arr<span style="color: #2196F3;">)</span><span style="color: #e91e63;">)</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline9">
+<h4 id="orgheadline9"><span class="section-number-4">2.3.4</span> Coroutines</h4>
+<p>
+A function with multiple entry and exit points
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #ffcc80;">a</span> = <span style="color: #e91e63;">[</span><span style="color: #9ccc65;">1</span>, <span style="color: #9ccc65;">2</span>, <span style="color: #9ccc65;">3</span>, <span style="color: #9ccc65;">4</span>, <span style="color: #9ccc65;">5</span><span style="color: #e91e63;">]</span>
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">squarer</span><span style="color: #e91e63;">()</span>:
+    <span style="color: #ffcc80;">result</span> = <span style="color: #9ccc65;">0</span>
+    <span style="color: #fff59d;">while</span> <span style="color: #8bc34a;">True</span>:
+        <span style="color: #ffcc80;">result</span> = <span style="color: #e91e63;">(</span><span style="color: #fff59d;">yield</span> result*result<span style="color: #e91e63;">)</span>
+<span style="color: #ffcc80;">iter_squarer</span> = squarer<span style="color: #e91e63;">()</span>
+<span style="color: #ff8A65;">next</span><span style="color: #e91e63;">(</span>iter_squarer<span style="color: #e91e63;">)</span>
+iter_squarer.send<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">2</span><span style="color: #e91e63;">)</span>
+iter_squarer.send<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">4</span><span style="color: #e91e63;">)</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline10">
+<h4 id="orgheadline10"><span class="section-number-4">2.3.5</span> First Class Functions</h4>
+<p>
+Wikipedia does a good job of explaining the idea
+"..passing functions as arguments to other functions, returning them as the values from other functions, and assigning them to variables or storing them in data structures&#x2026;" 
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #fff59d;">def</span> <span style="color: #84ffff;">one</span><span style="color: #e91e63;">(</span>a, b<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">return</span> a + b
+
+<span style="color: #ffcc80;">one</span> = <span style="color: #fff59d;">lambda</span> a, b: a + b
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">two</span><span style="color: #e91e63;">()</span>:
+    <span style="color: #fff59d;">def</span> <span style="color: #84ffff;">one</span><span style="color: #e91e63;">(</span>a,b<span style="color: #e91e63;">)</span>:
+        <span style="color: #fff59d;">return</span> a + b
+    <span style="color: #fff59d;">return</span> one
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline11">
+<h4 id="orgheadline11"><span class="section-number-4">2.3.6</span> Higher Order Functions</h4>
+<p>
+Functions which take other functions as arguments and return a new function
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #fff59d;">def</span> <span style="color: #84ffff;">composite</span><span style="color: #e91e63;">(</span>a, b<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">return</span> <span style="color: #fff59d;">lambda</span> x: a<span style="color: #e91e63;">(</span>b<span style="color: #2196F3;">(</span>x<span style="color: #2196F3;">)</span><span style="color: #e91e63;">)</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline16">
+<h2 id="orgheadline16"><span class="section-number-2">3</span> Creating Pipelines</h2>
+<div class="outline-text-2" id="text-3">
+</div></section>
+<section id="slide-orgheadline14">
+<h3 id="orgheadline14"><span class="section-number-3">3.1</span> Toy Example</h3>
+<p>
+Lets consider a simlpe example. Consider <a href="https://data.gov.in/catalog/company-master-data#web_catalog_tabs_block_10">company data from Chandigarh</a> . It has the follwoing fields:
+</p>
+
+<ul>
+<li>CORPORATE _ IDENTIFICATION _ NUMBER</li>
+<li>COMPANY _ NAME</li>
+<li>COMPANY _ STATUS</li>
+<li>COMPANY _ CLASS</li>
+<li>COMPANY _ CATEGORY</li>
+<li>AUTHORIZED _ CAPITAL</li>
+<li>PAIDUP _ CAPITAL</li>
+
+</ul>
+</section>
+<section>
+<ul>
+<li>DATE _ OF _ REGISTRATION</li>
+<li>REGISTERED _ STATE</li>
+<li>REGISTRAR _ OF _ COMPANIES</li>
+<li>PRINCIPAL _ BUSINESS _ ACTIVITY</li>
+<li>REGISTERED _ OFFICE _ ADDRESS</li>
+<li>SUB _ CATEGORY</li>
+
+</ul>
+
+<p>
+We will consider this data for all further examples
+</p>
+
+</section>
+<section id="slide-orgheadline15">
+<h3 id="orgheadline15"><span class="section-number-3">3.2</span> Problem</h3>
+<p>
+Lets try and get all private manufacturing companies. Let's also classify the
+companies as Indian or Foreign while we're at it:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #fff59d;">import</span> csv
+<span style="color: #fff59d;">from</span> copy <span style="color: #fff59d;">import</span> deepcopy
+<span style="color: #fff59d;">from</span> functools <span style="color: #fff59d;">import</span> <span style="color: #ff8A65;">reduce</span>
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">read</span><span style="color: #e91e63;">(</span>fname<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">with</span> <span style="color: #ff8A65;">open</span><span style="color: #e91e63;">(</span>fname, <span style="color: #9ccc65;">'rU'</span><span style="color: #e91e63;">)</span> <span style="color: #fff59d;">as</span> data:
+        <span style="color: #ffcc80;">reader</span> = csv.DictReader<span style="color: #e91e63;">(</span>data<span style="color: #e91e63;">)</span>
+        <span style="color: #fff59d;">for</span> row <span style="color: #fff59d;">in</span> reader:
+            <span style="color: #fff59d;">yield</span> row
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">assoc</span><span style="color: #e91e63;">(</span>_d, key, value<span style="color: #e91e63;">)</span>:
+    <span style="color: #ffcc80;">new_d</span> = deepcopy<span style="color: #e91e63;">(</span>_d<span style="color: #e91e63;">)</span>
+    <span style="color: #ffcc80;">new_d</span><span style="color: #e91e63;">[</span>key<span style="color: #e91e63;">]</span> = value
+    <span style="color: #fff59d;">return</span> new_d
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #fff59d;">def</span> <span style="color: #84ffff;">pipeline_run</span><span style="color: #e91e63;">(</span>data, fns<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">return</span> <span style="color: #ff8A65;">reduce</span><span style="color: #e91e63;">(</span><span style="color: #fff59d;">lambda</span> a, x: <span style="color: #ff8A65;">map</span><span style="color: #2196F3;">(</span>x, a<span style="color: #2196F3;">)</span>,
+                  fns,
+                  data<span style="color: #e91e63;">)</span>
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">get_pvt</span><span style="color: #e91e63;">(</span>data<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">return</span> <span style="color: #ff8A65;">filter</span><span style="color: #e91e63;">(</span><span style="color: #fff59d;">lambda</span> x: x<span style="color: #2196F3;">[</span><span style="color: #9ccc65;">'COMPANY_CLASS'</span><span style="color: #2196F3;">]</span> == <span style="color: #9ccc65;">'Private'</span>, data<span style="color: #e91e63;">)</span>
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">get_company_type</span><span style="color: #e91e63;">(</span>comp_data<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">if</span> comp_data<span style="color: #e91e63;">[</span><span style="color: #9ccc65;">'PRINCIPAL_BUSINESS_ACTIVITY'</span><span style="color: #e91e63;">]</span>.contains<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">'Manufact'</span><span style="color: #e91e63;">)</span>:
+        <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Manufacturing'</span>
+    <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Others'</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #fff59d;">def</span> <span style="color: #84ffff;">set_company_type</span><span style="color: #e91e63;">(</span>data<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">return</span> <span style="color: #ff8A65;">map</span><span style="color: #e91e63;">(</span><span style="color: #fff59d;">lambda</span> x:assoc<span style="color: #2196F3;">(</span>x, <span style="color: #9ccc65;">'type'</span>, get_company_type<span style="color: #EF6C00;">(</span>x<span style="color: #EF6C00;">)</span><span style="color: #2196F3;">)</span>, data<span style="color: #e91e63;">)</span>
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">get_nationality</span><span style="color: #e91e63;">(</span>comp_data<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">if</span> comp_data<span style="color: #e91e63;">[</span><span style="color: #9ccc65;">'SUB_CATEGORY'</span><span style="color: #e91e63;">]</span>.contains<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">'Indian'</span><span style="color: #e91e63;">)</span>:
+        <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Indian'</span>
+    <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Foreign'</span>
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">set_nationality</span><span style="color: #e91e63;">(</span>data<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">return</span> <span style="color: #ff8A65;">map</span><span style="color: #e91e63;">(</span><span style="color: #fff59d;">lambda</span> x:assoc<span style="color: #2196F3;">(</span>x, <span style="color: #9ccc65;">'nationality'</span>, get_nationality<span style="color: #EF6C00;">(</span>x<span style="color: #EF6C00;">)</span><span style="color: #2196F3;">)</span>, data<span style="color: #e91e63;">)</span>
+
+pipeline_run<span style="color: #e91e63;">(</span>read<span style="color: #2196F3;">(</span><span style="color: #9ccc65;">'chd.csv'</span><span style="color: #2196F3;">)</span>, <span style="color: #2196F3;">[</span>get_pvt, set_company_type, set_nationality<span style="color: #2196F3;">]</span><span style="color: #e91e63;">)</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline17">
+<h2 id="orgheadline17"><span class="section-number-2">4</span> Acknowledgement</h2>
+<p>
+Before moving ahead it is important to state that large parts of what I know about generators and
+coroutines comes from having read/watched David Beazly's presentations. So a large part of what
+follows will be fairly in sync his talks. If you haven't watched his talks or read some
+of his writings please do yourself a favor and do it today.
+</p>
+<ul>
+<li><a href="http://www.dabeaz.com/">David Beazly's Website</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline20">
+<h2 id="orgheadline20"><span class="section-number-2">5</span> Generators</h2>
+<div class="outline-text-2" id="text-5">
+</div></section>
+<section id="slide-orgheadline18">
+<h3 id="orgheadline18"><span class="section-number-3">5.1</span> Quick Intro to Generators</h3>
+<ul>
+<li>A function that returns a sequence of values instead of a single value</li>
+<li>Calling a generator object creates a generator object though no code inside
+the function is run</li>
+<li>Generator can be iterated over only once</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #fff59d;">def</span> <span style="color: #84ffff;">gen</span><span style="color: #e91e63;">(</span>n<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">for</span> i <span style="color: #fff59d;">in</span> <span style="color: #ff8A65;">range</span><span style="color: #e91e63;">(</span>n<span style="color: #e91e63;">)</span>:
+        <span style="color: #fff59d;">yield</span> i
+<span style="color: #ffcc80;">x</span> = gen<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">2</span><span style="color: #e91e63;">)</span> <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">x is a generator object</span>
+<span style="color: #ff8A65;">next</span><span style="color: #e91e63;">(</span>x<span style="color: #e91e63;">)</span> <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">0</span>
+<span style="color: #ff8A65;">next</span><span style="color: #e91e63;">(</span>x<span style="color: #e91e63;">)</span> <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">1</span>
+<span style="color: #ff8A65;">next</span><span style="color: #e91e63;">(</span>x<span style="color: #e91e63;">)</span> <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">StopIteration Error</span>
+<span style="color: #ffcc80;">y</span> = gen<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">5</span><span style="color: #e91e63;">)</span>
+<span style="color: #ff8A65;">sum</span><span style="color: #e91e63;">(</span>y<span style="color: #e91e63;">)</span> <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">15</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline19">
+<h3 id="orgheadline19"><span class="section-number-3">5.2</span> Generators as pipelines</h3>
+<p>
+Going back to our previous problem. This is an alternative solution using generators
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #fff59d;">import</span> csv
+<span style="color: #fff59d;">from</span> copy <span style="color: #fff59d;">import</span> deepcopy
+<span style="color: #fff59d;">import</span> math
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">read</span><span style="color: #e91e63;">(</span>fname<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">with</span> <span style="color: #ff8A65;">open</span><span style="color: #e91e63;">(</span>fname, <span style="color: #9ccc65;">'rU'</span><span style="color: #e91e63;">)</span> <span style="color: #fff59d;">as</span> data:
+        <span style="color: #ffcc80;">reader</span> = csv.DictReader<span style="color: #e91e63;">(</span>data<span style="color: #e91e63;">)</span>
+        <span style="color: #fff59d;">for</span> row <span style="color: #fff59d;">in</span> reader:
+            <span style="color: #fff59d;">yield</span> row
+
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">assoc</span><span style="color: #e91e63;">(</span>_d, key, value<span style="color: #e91e63;">)</span>:
+    <span style="color: #ffcc80;">new_d</span> = deepcopy<span style="color: #e91e63;">(</span>_d<span style="color: #e91e63;">)</span>
+    <span style="color: #ffcc80;">new_d</span><span style="color: #e91e63;">[</span>key<span style="color: #e91e63;">]</span> = value
+    <span style="color: #fff59d;">return</span> new_d
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">get_company_type</span><span style="color: #e91e63;">(</span>comp_data<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">if</span> comp_data<span style="color: #e91e63;">[</span><span style="color: #9ccc65;">'PRINCIPAL_BUSINESS_ACTIVITY'</span><span style="color: #e91e63;">]</span>.contains<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">'Manufact'</span><span style="color: #e91e63;">)</span>:
+        <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Manufacturing'</span>
+    <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Others'</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #fff59d;">def</span> <span style="color: #84ffff;">get_nationality</span><span style="color: #e91e63;">(</span>comp_data<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">if</span> comp_data<span style="color: #e91e63;">[</span><span style="color: #9ccc65;">'SUB_CATEGORY'</span><span style="color: #e91e63;">]</span>.contains<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">'Indian'</span><span style="color: #e91e63;">)</span>:
+        <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Indian'</span>
+    <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Foreign'</span>
+
+<span style="color: #ffcc80;">private_companies</span> = <span style="color: #e91e63;">(</span>row <span style="color: #fff59d;">for</span> row <span style="color: #fff59d;">in</span> read<span style="color: #2196F3;">(</span><span style="color: #9ccc65;">'chd.csv'</span><span style="color: #2196F3;">)</span> <span style="color: #fff59d;">if</span> row<span style="color: #2196F3;">[</span><span style="color: #9ccc65;">'COMPANY_CLASS'</span><span style="color: #2196F3;">]</span>==<span style="color: #9ccc65;">'Private'</span><span style="color: #e91e63;">)</span>
+
+<span style="color: #ffcc80;">with_type_data</span> = <span style="color: #e91e63;">(</span>assoc<span style="color: #2196F3;">(</span>row, <span style="color: #9ccc65;">'type'</span>, get_company_type<span style="color: #EF6C00;">(</span>row<span style="color: #EF6C00;">)</span><span style="color: #2196F3;">)</span>
+                  <span style="color: #fff59d;">for</span> row <span style="color: #fff59d;">in</span> private_companies<span style="color: #e91e63;">)</span>
+
+<span style="color: #ffcc80;">with_nationality</span> = <span style="color: #e91e63;">(</span>assoc<span style="color: #2196F3;">(</span>row, <span style="color: #9ccc65;">'type'</span>, get_nationality<span style="color: #EF6C00;">(</span>row<span style="color: #EF6C00;">)</span><span style="color: #2196F3;">)</span>
+                    <span style="color: #fff59d;">for</span> row <span style="color: #fff59d;">in</span> with_type_data<span style="color: #e91e63;">)</span>
+</pre>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline23">
+<h2 id="orgheadline23"><span class="section-number-2">6</span> Coroutines</h2>
+<div class="outline-text-2" id="text-6">
+</div></section>
+<section id="slide-orgheadline21">
+<h3 id="orgheadline21"><span class="section-number-3">6.1</span> Intro to Coroutines</h3>
+<ul>
+<li>A function with multiple entry and exit points. You can send data into the function at any time using the send command</li>
+<li>Calling a coroutine object creates a generator object though no code inside the function is run</li>
+<li>Only respond to next and send</li>
+<li>Coroutines must be initialized by first calling next</li>
+<li>Coroutine pipelines have data pushed to them rather than generating data. This allows us to do some crazy data routing. We can set up branched pipelines instead of having simple linear pipelines</li>
+
+</ul>
+</section>
+<section>
+<ul>
+<li>Coroutines can run indefinitely. They must be shut down with .close()</li>
+<li>Calling .close() raise GeneratorExit Error</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #fff59d;">def</span> <span style="color: #84ffff;">multiplier</span><span style="color: #e91e63;">(</span>x<span style="color: #e91e63;">)</span>:
+    <span style="color: #ffcc80;">res</span> = <span style="color: #9ccc65;">1</span> 
+    <span style="color: #fff59d;">while</span> <span style="color: #8bc34a;">True</span>:
+        <span style="color: #ffcc80;">res</span> = <span style="color: #e91e63;">(</span><span style="color: #fff59d;">yield</span> res*x<span style="color: #e91e63;">)</span>
+
+<span style="color: #ffcc80;">six_multiplier</span> = multiplier<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">6</span><span style="color: #e91e63;">)</span>
+<span style="color: #ff8A65;">next</span><span style="color: #e91e63;">(</span>six_multiplier<span style="color: #e91e63;">)</span>
+six_multiplier<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">4</span><span style="color: #e91e63;">)</span> <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">24</span>
+six_multiplier<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">6</span><span style="color: #e91e63;">)</span> <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">36</span>
+six_multiplier<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">8</span><span style="color: #e91e63;">)</span> <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">48</span>
+</pre>
+</div>
+
+</section>
+<section id="slide-orgheadline22">
+<h3 id="orgheadline22"><span class="section-number-3">6.2</span> Pipelines with coroutines and generators</h3>
+<p>
+We will consider the toy problem we've been solving this presentation but this time we will
+split the pipline and use one branch to write to a file and another branch to calculate average
+paid up capital
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #fff59d;">import</span> csv
+<span style="color: #fff59d;">from</span> copy <span style="color: #fff59d;">import</span> deepcopy
+<span style="color: #fff59d;">import</span> math
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">coroutine</span><span style="color: #e91e63;">(</span>fn<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">def</span> <span style="color: #84ffff;">start</span><span style="color: #e91e63;">(</span>*args,**kwargs<span style="color: #e91e63;">)</span>:
+        <span style="color: #ffcc80;">cr</span> = func<span style="color: #e91e63;">(</span>*args,**kwargs<span style="color: #e91e63;">)</span>
+        cr.<span style="color: #ff8A65;">next</span><span style="color: #e91e63;">()</span>
+        <span style="color: #fff59d;">return</span> cr
+    <span style="color: #fff59d;">return</span> start
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">read</span><span style="color: #e91e63;">(</span>fname<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">with</span> <span style="color: #ff8A65;">open</span><span style="color: #e91e63;">(</span>fname, <span style="color: #9ccc65;">'rU'</span><span style="color: #e91e63;">)</span> <span style="color: #fff59d;">as</span> data:
+        <span style="color: #ffcc80;">reader</span> = csv.DictReader<span style="color: #e91e63;">(</span>data<span style="color: #e91e63;">)</span>
+        <span style="color: #fff59d;">for</span> row <span style="color: #fff59d;">in</span> reader:
+            <span style="color: #fff59d;">yield</span> row
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #fff59d;">def</span> <span style="color: #84ffff;">assoc</span><span style="color: #e91e63;">(</span>_d, key, value<span style="color: #e91e63;">)</span>:
+    <span style="color: #ffcc80;">new_d</span> = deepcopy<span style="color: #e91e63;">(</span>_d<span style="color: #e91e63;">)</span>
+    <span style="color: #ffcc80;">new_d</span><span style="color: #e91e63;">[</span>key<span style="color: #e91e63;">]</span> = value
+    <span style="color: #fff59d;">return</span> new_d
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">get_company_type</span><span style="color: #e91e63;">(</span>comp_data<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">if</span> comp_data<span style="color: #e91e63;">[</span><span style="color: #9ccc65;">'PRINCIPAL_BUSINESS_ACTIVITY'</span><span style="color: #e91e63;">]</span>.contains<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">'Manufact'</span><span style="color: #e91e63;">)</span>:
+        <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Manufacturing'</span>
+    <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Others'</span>
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">get_nationality</span><span style="color: #e91e63;">(</span>comp_data<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">if</span> comp_data<span style="color: #e91e63;">[</span><span style="color: #9ccc65;">'SUB_CATEGORY'</span><span style="color: #e91e63;">]</span>.contains<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">'Indian'</span><span style="color: #e91e63;">)</span>:
+        <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Indian'</span>
+    <span style="color: #fff59d;">return</span> <span style="color: #9ccc65;">'Foreign'</span>
+
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">producer</span><span style="color: #e91e63;">(</span>target<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">for</span> row <span style="color: #fff59d;">in</span> read<span style="color: #e91e63;">(</span><span style="color: #9ccc65;">'chd.csv'</span><span style="color: #e91e63;">)</span>:
+        target.send<span style="color: #e91e63;">(</span>row<span style="color: #e91e63;">)</span>
+    target.close<span style="color: #e91e63;">()</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #84ffff;">@coroutine</span>
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">set_nationality</span><span style="color: #e91e63;">(</span>target<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">while</span> <span style="color: #8bc34a;">True</span>:
+        <span style="color: #ffcc80;">item</span> = <span style="color: #e91e63;">(</span><span style="color: #fff59d;">yield</span><span style="color: #e91e63;">)</span>
+        <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">Receive an item</span>
+        <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">Transform/filter item</span>
+        <span style="color: #ffcc80;">new_d</span> = assoc<span style="color: #e91e63;">(</span>item, <span style="color: #9ccc65;">'NATIONALITY'</span>, get_nationality<span style="color: #2196F3;">(</span>item<span style="color: #2196F3;">)</span><span style="color: #e91e63;">)</span>
+        <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">Send it along to the next stage</span>
+        target.send<span style="color: #e91e63;">(</span>new_d<span style="color: #e91e63;">)</span>
+
+<span style="color: #84ffff;">@coroutine</span>
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">set_type</span><span style="color: #e91e63;">(</span>targets<span style="color: #e91e63;">)</span>:
+    <span style="color: #fff59d;">while</span> <span style="color: #8bc34a;">True</span>:
+        <span style="color: #ffcc80;">item</span> = <span style="color: #e91e63;">(</span><span style="color: #fff59d;">yield</span><span style="color: #e91e63;">)</span>
+        <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">Receive an item</span>
+        <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">Transform/filter item</span>
+        <span style="color: #fff59d;">for</span> target <span style="color: #fff59d;">in</span> targets:
+            <span style="color: #ffcc80;">new_d</span> = assoc<span style="color: #e91e63;">(</span>item, <span style="color: #9ccc65;">'TYPE'</span>, get_company_type<span style="color: #2196F3;">(</span>item<span style="color: #2196F3;">)</span><span style="color: #e91e63;">)</span>
+            <span style="color: #b0bec5;"># </span><span style="color: #b0bec5;">Send it along to the next stage</span>
+            target.send<span style="color: #e91e63;">(</span>new_d<span style="color: #e91e63;">)</span>
+
+<span style="color: #84ffff;">@coroutine</span>
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">printer</span><span style="color: #e91e63;">()</span>:
+    <span style="color: #fff59d;">while</span> <span style="color: #8bc34a;">True</span>:
+        <span style="color: #ffcc80;">line</span> = <span style="color: #e91e63;">(</span><span style="color: #fff59d;">yield</span><span style="color: #e91e63;">)</span>
+        <span style="color: #fff59d;">print</span><span style="color: #e91e63;">(</span>line<span style="color: #e91e63;">)</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<div class="org-src-container">
+
+<pre  class="src src-python"><span style="color: #84ffff;">@coroutine</span>
+<span style="color: #fff59d;">def</span> <span style="color: #84ffff;">writer</span><span style="color: #e91e63;">()</span>:
+    <span style="color: #fff59d;">with</span> <span style="color: #ff8A65;">open</span><span style="color: #e91e63;">(</span><span style="color: #9ccc65;">'chd_new.csv'</span>, <span style="color: #9ccc65;">'w'</span><span style="color: #e91e63;">)</span> <span style="color: #fff59d;">as</span> csvfile:
+        <span style="color: #ffcc80;">fieldnames</span> = <span style="color: #e91e63;">[</span>
+            CORPORATE_IDENTIFICATION_NUMBER,
+            COMPANY_NAME,COMPANY_STATUS,
+            COMPANY_CLASS,
+            COMPANY_CATEGORY,
+            AUTHORIZED_CAPITAL,
+            PAIDUP_CAPITAL,
+            DATE_OF_REGISTRATION,
+            REGISTERED_STATE,
+            REGISTRAR_OF_COMPANIES,
+            PRINCIPAL_BUSINESS_ACTIVITY,
+            REGISTERED_OFFICE_ADDRESS,
+            SUB_CATEGORY,
+            TYPE,
+            NATIONALITY
+            <span style="color: #e91e63;">]</span>
+        <span style="color: #ffcc80;">writer</span> = csv.DictWriter<span style="color: #e91e63;">(</span>csvfile, fieldnames=fieldnames<span style="color: #e91e63;">)</span>
+
+        writer.writeheader<span style="color: #e91e63;">()</span>
+    <span style="color: #fff59d;">while</span> <span style="color: #8bc34a;">True</span>:
+        <span style="color: #ffcc80;">line</span> = <span style="color: #e91e63;">(</span><span style="color: #fff59d;">yield</span><span style="color: #e91e63;">)</span>
+        writer.writerow<span style="color: #e91e63;">(</span>line<span style="color: #e91e63;">)</span>
+
+producer<span style="color: #e91e63;">(</span>set_nationality<span style="color: #2196F3;">(</span>set_type<span style="color: #EF6C00;">(</span><span style="color: #B388FF;">[</span>printer, writer<span style="color: #B388FF;">]</span><span style="color: #EF6C00;">)</span><span style="color: #2196F3;">)</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgheadline24">
+<h2 id="orgheadline24"><span class="section-number-2">7</span> Next Steps</h2>
+<p>
+Get more performance out of your data processing pipelines:
+</p>
+<ul>
+<li>Even more branchy pipelines. A generalized approach to branching pipelines.</li>
+<li>Asyncio to deal with blocking I/O calls in coroutine pipeline sinks</li>
+<li>Threads/Subprocesses to parallelize pipelines</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.bootcss.com/reveal.js/3.1.0/lib/js/head.min.js"></script>
+<script src="https://cdn.bootcss.com/reveal.js/3.1.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.bootcss.com/reveal.js/3.1.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.bootcss.com/reveal.js/3.1.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.bootcss.com/reveal.js/3.1.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.bootcss.com/reveal.js/3.1.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.bootcss.com/reveal.js/3.1.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
